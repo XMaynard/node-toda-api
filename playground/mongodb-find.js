@@ -8,25 +8,17 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db)=> {
     }
     console.log('Connected to MongoDB server');
     
-//    db.collection('Todos').find({completed:false}).toArray().then((docs) =>{
-//        console.log('Todos');
-//        console.log(JSON.stringify(docs, undefined, 2));
-//    }, (err) =>{
-//        console.log('Unable to fetch todos', err);
-//    });
-    
-    db.collection('User').find({name: 'John'}).count().then((count) => {
-        console.log(`Number of Item:  ${count}`);
-    }, (err) =>{
-        console.log('Unable to count items', err); 
+
+    //deletemany
+    db.collection('Todos').deleteMany({text: 'eat lunch'}).then((result) => {
+        console.log(result);
     });
+    //deleteOne
     
-    db.collection('User').find({name: 'John'}).toArray().then((docs)=>{
-        console.log('User list:');
-        console.log(JSON.stringify(docs, undefined, 2));
-    }, (err)=>{
-        console.log('Unable to find documents');
-    });
+    //findOneAndDelete
+    
+    
+    
     
    // db.close();
 });
