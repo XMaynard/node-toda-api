@@ -19,10 +19,10 @@ app.post('/todos', (req, res) =>{
     
     todo.save().then((doc)=>{
         res.send(doc);
-        console.log(JSON.stringify(doc, undefined, 2));
+        //console.log(JSON.stringify(doc, undefined, 2));
     }, (e)=>{
         res.status(400).send(e);
-        console.log('Unable to save the todo', e);
+        //console.log('Unable to save the todo', e);
     });
 });
 
