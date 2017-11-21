@@ -9,7 +9,7 @@ let UserSchema =new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        minlenght: 1,
+        minlenght: 4,
         unique:true,
         validate: {
             validator: validator.isEmail,
@@ -36,7 +36,7 @@ let UserSchema =new mongoose.Schema({
 });
 
 UserSchema.methods.toJSON = function(){
-    let user =this;
+    let user = this;
     let userObject = user.toObject();
    
     return _.pick(userObject, ['_id', 'email']);  
@@ -80,9 +80,7 @@ UserSchema.statics.findByToken = function(token){
             return Promise.reject();
         }
          
-        
          return new Promise((resolve, reject) => {
-        
         bcrypt.compare(password, user.password, (err, res) =>{
     if(res){
         resolve(user);
@@ -111,9 +109,6 @@ UserSchema.pre('save', function(next){
         next();
     }
 });
-
-
-
 
 
 

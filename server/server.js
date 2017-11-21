@@ -10,7 +10,7 @@ let {Todo} = require('./models/todo');
 let {User} = require('./models/user');
 let {authenticate} = require('./middleware/authenticate');
 
-let app = express();
+let app = express(); 
 const port = process.env.PORT || 3000;
 
 //middleware
@@ -118,7 +118,6 @@ app.get('/users/me', authenticate, (req, res) => {
 });
 
 //POST /users/login {email, password}
-
 app.post('/users/login', (req, res) =>{
     let body =_.pick(req.body, ['email', 'password']);
     //let userLogin = req.body.email;
